@@ -1,0 +1,30 @@
+﻿@model  SignIframeIntegration.Models.HomeViewModel
+
+<div class="row">
+    <div class="col-ms-12 text-center">
+        <form action="@Url.Action("SendEnvelope")" method="post" class="form-inline">
+            <div class="form-group">
+                <label>Name</label>
+                <input autocomplete="off" type="text" class="form-control" value="@Model.Name" name="Name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">Email</label>
+                <input autocomplete="off" type="email" class="form-control" value="@Model.Email" name="Email" placeholder="your@email.com">
+            </div>
+            <button type="submit" class="btn btn-primary btn-default">SIGN</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-ms-12">
+
+        @if (!string.IsNullOrEmpty(Model.Url))
+        {
+            <br />
+            <br />
+            <iframe src="@Model.Url" seamless="" scrolling="auto" width="100%" height="800px"></iframe>
+        }
+    </div>
+</div>
+
