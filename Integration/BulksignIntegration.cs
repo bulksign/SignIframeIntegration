@@ -6,8 +6,8 @@ namespace SignIframeIntegration
 {
 	public class BulksignIntegration
 	{
-		private const string authEmail = "";
-		private const string authToken = "";
+		private const string userEmail = "";
+		private const string key = "";
 
 
 		public BulksignResult<SendEnvelopeResultApiModel> SendEnvelope(string name, string email, string filePath)
@@ -19,9 +19,9 @@ namespace SignIframeIntegration
 			
 
 
-			EnvelopeApiModel bundle = new EnvelopeApiModel();
-			bundle.Name = "Website Integration Sample";
-			bundle.DisableSignerEmailNotifications = true; //no email notifications
+			EnvelopeApiModel envelope = new EnvelopeApiModel();
+			envelope.Name = "Website Integration Sample";
+			envelope.DisableSignerEmailNotifications = true; //no email notifications
 
 
 			RecipientApiModel recipient = new RecipientApiModel();
@@ -30,7 +30,7 @@ namespace SignIframeIntegration
 			recipient.Name = name;
 			recipient.RecipientType = RecipientTypeApi.Signer;
 
-			bundle.Recipients = new RecipientApiModel[1] { recipient };
+			envelope.Recipients = new RecipientApiModel[1] { recipient };
 
 
 			DocumentApiModel document = new DocumentApiModel();
@@ -40,16 +40,16 @@ namespace SignIframeIntegration
 				ContentBytes = File.ReadAllBytes(filePath)
 			};
 
-			bundle.Documents = new DocumentApiModel[1] { document };
+			envelope.Documents = new DocumentApiModel[1] { document };
 
 
 			AuthenticationApiModel auth = new AuthenticationApiModel();
 
-			auth.UserEmail = authEmail;
-			auth.Token = authToken;
+			auth.UserEmail = userEmail;
+			auth.Key = key;
 
 
-			return api.SendEnvelope(auth, bundle);
+			return api.SendEnvelope(auth, envelope);
 		}
 
 	}
