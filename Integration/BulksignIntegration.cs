@@ -13,9 +13,9 @@ namespace SignIframeIntegration
 		public BulksignResult<SendEnvelopeResultApiModel> SendEnvelope(string name, string email, string filePath)
 		{
 			//specify the integration url for on-premise version of Bulksign, leave empty to target bulksign.com
-			//BulkSignApi api = new BulkSignApi("http://your_on_premise_BulksignApi_endpoint);
+			//BulksignApiClient api = new BulksignApiClient("http://your_on_premise_BulksignApi_endpoint);
 
-			BulkSignApi api = new BulkSignApi();
+			BulksignApiClient api = new BulksignApiClient();
 			
 
 
