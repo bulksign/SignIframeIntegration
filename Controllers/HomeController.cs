@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Bulksign.Api;
-using SignIframeIntegration;
+﻿using System.Web.Mvc;
 using SignIframeIntegration.Models;
+using Bulksign.Api;
 
 namespace SignIframeIntegration.Controllers
 {
@@ -28,7 +23,7 @@ namespace SignIframeIntegration.Controllers
 
 			if (result.IsSuccessful)
 			{
-				string url = result.Response.RecipientAccess[0].SigningUrl;
+				string url = result.Result.RecipientAccess[0].SigningUrl;
 
 				return View("Index", new HomeViewModel()
 				{
